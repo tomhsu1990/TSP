@@ -31,7 +31,7 @@ void TSP (int cnt, std::vector<bool> visited, std::vector<Pose> &pos,
 		}
 		return ;
 	}
-	for (unsigned i=0;i<pos.size()-1;++i) {
+	for (unsigned i=1;i<pos.size()-1;++i) {
 		if (!visited[i]) {
 			visited[i] = true;
 			tmp_route.push_back(pos[i]);
@@ -59,9 +59,9 @@ int main (int argc, char *argv[]) {
 		}
 		std::vector<bool> visited(pos.size(), false);
 		std::vector<Pose> tmp_route, ans_route;
-
+		tmp_route.push_back(pos[0]);
 		double ans_length(DBL_MAX);
-		TSP (0, visited, pos, tmp_route, ans_route, ans_length);
+		TSP (1, visited, pos, tmp_route, ans_route, ans_length);
 
 		for (unsigned i=0;i<ans_route.size();++i) {
 			if (i != 0) std::cout << " -> ";
